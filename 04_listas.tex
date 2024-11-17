@@ -1,0 +1,57 @@
+% https://www.learnlatex.org/pt/lesson-04
+
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+
+\begin{document}
+
+Ordenada:
+
+\begin{enumerate}
+	\item Um item.
+	\item Outro.
+	\item Três itens.
+\end{enumerate}
+
+Não ordenada:
+
+\begin{itemize}
+	\item Um item.
+	\item Outro.
+	\item Três itens.
+\end{itemize}
+
+Aninhada ordenada:
+
+\begin{enumerate}
+	\item primeiro nível
+	\begin{enumerate}
+		\item segundo nível
+		\begin{enumerate}
+			\item terceiro nível
+			\begin{enumerate}
+				\item quarto nível é o máximo permitido, mais do que isso vai dar erro ao compilar.
+				\item mais do que quatro níveis não é uma boa formatação de texto.
+			\end{enumerate}
+		\end{enumerate}
+	\end{enumerate}
+\end{enumerate}
+
+Aninhada não ordenada:
+
+\begin{itemize}
+	\item primeiro nível
+	\begin{itemize}
+		\item segundo nível
+		\begin{itemize}
+			\item terceiro nível
+			\begin{itemize}
+				\item quarto nível é o máximo permitido, mais do que isso vai dar erro ao compilar.
+				\item mais do que quatro níveis não é uma boa formatação de texto.
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+
+\end{document}
