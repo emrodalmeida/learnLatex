@@ -1,0 +1,22 @@
+% https://www.learnlatex.org/pt/lesson-06
+% https://www.learnlatex.org/pt/more-06
+% O exemplo a seguir mostra um comando para produzir palavras-chave com um estilo específico aplicado.
+
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}  % Aqui carregamos o pacote xcolor para utilizar cores e usamos cor azul ao invés de negrito na formatação.
+\usepackage{lipsum}
+
+% A partir da versão de Outubro de 2020 do LaTeX, um sistema estendido de definições está disponível. Em versões anteriores esse sistema estava disponível no pacote xparse que incluímos aqui por compatibilidade.
+\usepackage{xparse} % Necessário apenas em versões antigas do LaTeX
+
+% Ao contrário do \newcommand, onde apenas o número de argumentos é dado, opcionalmente dando um valor padrão para o primeiro, com o \NewDocumentCommand cada argumento é especificado com uma letra, então um comando de dois argumentos é especificado com {mm} ao invés de [2]. Essa forma é um pouco mais longa, mas permite muito mais flexibilidade nos comandos a serem definidos. Aqui damos apenas esse simples exemplo onde o primeiro argument é opcoinal, com padrão azul (O{blue}) e o segundo é obrigatório (m).
+\NewDocumentCommand{\kw}{O{blue} m}{\textcolor{#1}{\itshape #2}}
+
+\begin{document}
+
+Algo sobre \kw[red]{maçãs} e \kw{laranjas}.
+
+\lipsum[1-3]
+
+\end{document}

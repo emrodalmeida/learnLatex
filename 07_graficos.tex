@@ -1,0 +1,47 @@
+% https://www.learnlatex.org/pt/lesson-07
+
+\documentclass[brazilian, twocolumn]{article}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{lipsum}
+\usepackage{babel}
+
+\begin{document}
+Essa imagem
+\begin{center}
+    \includegraphics[height=2cm]{example-image}
+\end{center}
+é um PDF importado
+
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{example-image}
+\end{center}
+Mais texto.
+
+Você também pode redimensionar imagens usando um fator de escala com \textbf{scale}, ou girá-las usando \textbf{angle}. Outra coisa que você pode querer fazer é cortar (com \textbf{clip}) ou aparar (com \textbf{trim}) uma imagem.
+\begin{center}
+    \includegraphics[clip, trim = 0 0 50 90]{example-image}
+\end{center}
+
+\lipsum[1-4]
+
+Local de teste.
+
+% Você pode usar quatro especificadores diferentes:
+%     h ‘aqui’ se possível (here)
+%     t topo da página (top)
+%     b final da página (bottom)
+%     p uma página dedicada para floats (float page)
+\begin{figure}[ht]
+    \centering % Dentro de um float (como o figure) você deve usar \centering se quiser centralizar o conteúdo; isso evita que o ambiente center adicione espaçamento vertical indesejado.
+    \includegraphics[width=0.5\linewidth]{example-image-a.png}
+    \caption{Uma imagem de exemplo}
+\end{figure}
+
+\lipsum[6-10]
+
+\begin{center}
+    \includegraphics[width=0.4\linewidth, angle=45]{example-image}
+\end{center}
+
+\end{document}

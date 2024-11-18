@@ -1,0 +1,45 @@
+% https://www.learnlatex.org/pt/more-07
+
+\documentclass[brazilian]{article}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{babel}
+
+\graphicspath{{figs/}{pics/}} % um item entre chaves para cada subpasta
+\usepackage{float}  % coloca a figura exatamente onde ela está no código fonte
+
+
+\usepackage{trivfloat}
+\trivfloat{image}  % fornece um único comando para fazer novos tipos de floats.
+
+\begin{document}
+A opção \textbf{H} coloca a figura ‘absolutamente aqui’. No entanto não é recomendado usar \textbf{H} pois ele pode criar grandes espaços em branco no seu documento.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{example-image}
+  \caption{Uma imagem de exemplo}
+\end{figure}
+
+Não temos que necessariamente colocar figuras no ambiente \textit{figure} nem tabelas no ambiente \textit{table}; isto é apenas convenção.
+
+Você pode querer outros tipos de ambientes flutuantes (\textbf{floats}); cada tipo é inserido independentemente. Você pode fazer isso usando o pacote \textbf{trivfloat}.
+\begin{image}
+  \centering
+  \includegraphics[width=0.5\textwidth]{example-image}
+  \caption{Uma imagem de exemplo}
+\end{image}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+

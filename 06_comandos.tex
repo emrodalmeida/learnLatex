@@ -1,0 +1,20 @@
+% https://www.learnlatex.org/pt/lesson-06
+% https://www.learnlatex.org/pt/more-06
+% O exemplo a seguir mostra um comando para produzir palavras-chave com um estilo específico aplicado.
+
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}  % Aqui carregamos o pacote xcolor para utilizar cores e usamos cor azul ao invés de negrito na formatação.
+\usepackage{lipsum}
+
+% O \newcommand permite comandos com até nove argumentos, em que o primeiro pode ser opcional. Você pode usar até nove argumentos, mas geralmente é melhor usar poucos argumentos; um ou até nenhum.
+% Argumentos opcionais são delimitados por [] e, se omitidos, o padrão especificado na definição é usado.
+\newcommand{\kw}[2][blue]{\textcolor{#1}{\itshape #2}} 
+
+\begin{document}
+
+Algo sobre \kw{maçãs} e \kw[red]{laranjas}.
+
+\lipsum[1-3]
+
+\end{document}

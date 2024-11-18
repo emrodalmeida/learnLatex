@@ -1,0 +1,127 @@
+% https://www.learnlatex.org/pt/more-05
+% https://www.texdev.net/2014/01/17/the-beamer-slide-overlay-concept/
+
+
+\documentclass{beamer}
+\usepackage[T1]{fontenc}
+
+\begin{document}
+
+\begin{frame}
+    \frametitle{1º quadro}
+    Algum texto
+\end{frame}
+
+\begin{frame}
+    \frametitle{2º quadro}
+    Mais texto
+    \begin{itemize}
+        \item<1-> Este item aparece no primeiro e todos os slides seguintes.
+        \item<2-> Este item aparece no segundo e todos os slides seguintes.
+        \item<3-> Este item aparece no terceiro e todos os slides seguintes.        
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{3º quadro - Overlay básico}
+    \begin{itemize}
+        \item<1> Este item aparece só no primeiro slide.
+        \item<-3> Este item aparece só nos três primeiros slides.
+        \item<2-4,6> Este item aparece no segundo ao quarto slides e depois no sexto slide.
+
+        % The syntax is quite powerful, but there are at least a couple of issues. First, the slide numbers are hard-coded. That means that if I want to add something else in before the first item I’ve got to renumber everything. Secondly, I’m having to repeat myself. Luckily, beamer offers a way to address both of these concerns.
+        
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{4º Quadro: Auto-incremento}
+    \begin{itemize}
+        \item<+-> Este item aparece no primeiro e todos os slides seguintes.
+        \item<+-> Este item aparece no segundo e todos os slides seguintes.
+        \item<+-> Este item aparece no terceiro e todos os slides seguintes.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{5º quadro: Reduzindo a redundância}
+    \begin{itemize}[<+->]
+        \item Este item aparece no primeiro e todos os slides seguintes.
+        \item Este item aparece no segundo e todos os slides seguintes.
+        \item Este item aparece no terceiro e todos os slides seguintes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{6º quadro: Reduzindo a redundância}
+    \begin{itemize}[<+->]
+        \item Este item aparece no primeiro e todos os slides seguintes.
+        \item Este item aparece no segundo e todos os slides seguintes.
+        \item Este item aparece no terceiro e todos os slides seguintes.
+        \item<1-> Este item aparece no primeiro e todos os slides seguintes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{7º quadro: Repetindo a numeração do overlay (manual)}
+    \begin{itemize}
+        \item<1-> Este item aparece no primeiro e todos os slides seguintes.
+        \item<1-> Este item também aparece no primeiro e todos os slides seguintes.
+        \item<2-> Este item aparece no segundo e todos os slides seguintes.
+        \item<2-> Este item também aparece no segundo e todos os slides seguintes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{8º quadro: Repetindo a numeração do overlay (auto)}
+     % '.' can be read as ‘repeat the overlay number of the last +’. So the two '+' overlay specifications create two slides, while the two lines using '.' in the specification ‘pick up’ the overlay number of the preceding '+'
+    
+    \begin{itemize}
+        \item<+-> Este item aparece no primeiro e todos os slides seguintes.
+        \item<.-> Este item também aparece no primeiro e todos os slides seguintes.
+        \item<+-> Este item aparece no segundo e todos os slides seguintes.
+        \item<.-> Este item também aparece no segundo e todos os slides seguintes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{9º quadro: Repetindo a numeração do overlay (auto, reduzido)}
+    \begin{itemize}[<+->]
+        \item Este item aparece no primeiro e todos os slides seguintes.
+        \item<.-> Este item também aparece no primeiro e todos os slides seguintes.
+        \item Este item aparece no segundo e todos os slides seguintes.
+        \item<.-> Este item também aparece no segundo e todos os slides seguintes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{10º quadro: Offsets}
+    % To allow even more flexibility, beamer has the concept of an ‘offset’: and adjustment to the number that is automatically inserted.
+
+    \begin{itemize}
+        \item<+(1)-> Este item aparece no segundo e todos os slides seguintes.
+        \item<+(1)-> Este item aparece no terceiro e todos os slides seguintes.
+        \item<+-> Este item também aparece no terceiro e todos os slides seguintes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{11º quadro: Offsets (exemplo realístico)}
+    % A more realistic example for where an offset is useful is the case of revealing items ‘out of order’
+
+    \begin{itemize}
+        \item<+-> Este item aparece no primeiro e todos os slides seguintes.
+        \item<+-> Este item aparece no segundo e todos os slides seguintes.
+        \item<.(-1)-> Este item aparece no primeiro e todos os slides seguintes.
+        \item<.-> Este item aparece no segundo e todos os slides seguintes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{12º quadro: Offsets (exemplo realístico equivalente)}
+    % A more realistic example for where an offset is useful is the case of revealing items ‘out of order’
+
+    \begin{itemize}
+        \item<+-> Este item aparece no primeiro e todos os slides seguintes.
+        \item<.(1)-> Este item aparece no segundo e todos os slides seguintes.
+        \item<.-> Este item aparece no primeiro e todos os slides seguintes.
+        \item<+-> Este item aparece no segundo e todos os slides seguintes.
+    \end{itemize}
+\end{frame}
+
+\end{document}
