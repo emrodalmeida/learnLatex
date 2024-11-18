@@ -1,0 +1,230 @@
+% https://www.learnlatex.org/pt/lesson-08
+
+\documentclass[brazilian]{article}
+\usepackage{babel}
+\usepackage[T1]{fontenc}
+\usepackage{array}   % adiciona mais funcionalidades às tabelas do LaTeX
+\usepackage{booktabs}  % fornece quatro tipos diferentes de borda
+
+\begin{document}
+
+% ========================
+\section{Tabela com textos longos}
+
+Se uma coluna da tabela contém muito texto, você terá problemas em acertar a tabela apenas com \emph{l}, \emph{c} e \emph{r}. No exemplo abaixo o tipo de coluna \emph{l} escreve o conteúdo em uma única linha com sua largura natural, mesmo se isso ultrapassar a margem. \\
+
+\begin{tabular}{cl}
+    Animal & Descrição \\
+    Cão    & O cão é um mamífero carnívoro da família dos canídeos, subespécie do
+             lobo, e talvez o mais antigo animal domesticado pelo ser humano. \\
+    Gato   & O gato é um mamífero carnívoro da família dos felídeos, muito popular
+             como animal de estimação. Ocupando o topo da cadeia alimentar, é
+             predador natural de diversos animais, como roedores, pássaros,
+             lagartixas e alguns insetos. \\
+\end{tabular}
+
+\vspace{10pt}
+
+Para resolver isso, você pode usar a coluna tipo \emph{p}. Ela escreve os conteúdos como parágrafos com a largura que você especificar como argumento e alinha o bloco de texto com o topo das outras linhas.\\
+
+\begin{tabular}{cp{9cm}}
+    Animal & Descrição \\
+    Cão    & O cão é um mamífero carnívoro da família dos canídeos, subespécie do
+             lobo, e talvez o mais antigo animal domesticado pelo ser humano. \\
+    Gato   & O gato é um mamífero carnívoro da família dos felídeos, muito popular
+             como animal de estimação. Ocupando o topo da cadeia alimentar, é
+             predador natural de diversos animais, como roedores, pássaros,
+             lagartixas e alguns insetos. \\
+\end{tabular}
+
+% ========================
+\section{Muitas colunas iguais}
+    
+Você pode facilitar as coisas usando \emph{*\{num\}\{símbolos\}}, que vai repetir os \emph{símbolos} por \emph{num} vezes. Assim, \emph{*\{6\}\{c\}} é equivalente a \emph{cccccc}. \\
+
+\begin{tabular}{*{3}{p{3cm}}}
+    Animal & Comida & Tamanho \\
+    cão    & carne  & médio   \\
+    cavalo & capim  & grande  \\
+    sapo   & moscas & pequeno \\
+\end{tabular}
+
+% ========================
+\section{Bordas}
+
+Tabelas ‘profissionais’ não devem usar nenhuma das bordas padrão fornecidas pelo LaTeX.\\
+
+\begin{tabular}{*{3}c}
+    \toprule
+    Animal & Comida & Tamanho \\
+    \midrule
+    cão    & carne  & médio   \\
+    cavalo & capim  & grande  \\
+    sapo   & moscas & pequeno \\
+    \bottomrule
+\end{tabular}
+
+\vspace{10pt}
+
+O comando \emph{cmidrule} pode ser usado para desenhar um traço que não cobre toda a largura da tabela, mas apenas um conjunto específico de colunas. \\
+
+\begin{tabular}{*{3}{p{3cm}}}
+    \toprule
+    Animal & Comida & Tamanho \\
+    \midrule
+    cão    & carne  & médio   \\
+    \cmidrule{1-2}
+    cavalo & capim  & grande  \\
+    \cmidrule{1-1}
+    \cmidrule{3-3}
+    sapo   & moscas & pequeno \\
+    \bottomrule
+\end{tabular}
+
+\vspace{10pt}
+
+Há outra funcionalidade útil de \emph{cmidrule}. Você pode encurtá-lo em qualquer um dos lados com um argumento opcional entre parênteses: \\
+
+\begin{tabular}{*{3}{p{3cm}}}
+    \toprule
+    Animal & Comida & Tamanho \\
+    \midrule
+    cão    & carne  & médio   \\
+    \cmidrule{1-2}
+    cavalo & capim  & grande  \\
+    \cmidrule(r){1-1}
+    \cmidrule(rl){2-2}
+    \cmidrule(l){3-3}
+    sapo   & moscas & pequeno \\
+    \bottomrule
+\end{tabular}
+
+\vspace{10pt}
+
+Você pode usar \emph{addlinespace} para inserir um pequeno espaço vertical: \\
+
+\begin{tabular}{cp{9cm}}
+    \toprule
+    Animal & Descrição \\
+    \midrule
+    Cão    & O cão é um mamífero carnívoro da família dos canídeos, subespécie do
+             lobo, e talvez o mais antigo animal domesticado pelo ser humano. \\
+    \addlinespace
+    Gato   & O gato é um mamífero carnívoro da família dos felídeos, muito popular
+             como animal de estimação. Ocupando o topo da cadeia alimentar, é
+             predador natural de diversos animais, como roedores, pássaros,
+             lagartixas e alguns insetos. \\
+    \bottomrule
+\end{tabular}
+
+\vspace{10pt}
+
+Você pode unir células horizontalmente usando o comando \emph{multicolumn}. Ele deve ser a primeira coisa em uma célula e leva três argumentos:
+
+\begin{itemize}
+    \item O número de células que devem ser unidas;
+    \item O alinhamento da célula resultante;
+    \item O conteúdo da célula resultante;
+\end{itemize}
+
+O alinhamento pode conter qualquer coisa válida no preâmbulo de um tabular, mas apenas um único tipo de coluna:
+
+\begin{tabular}{lll}
+    \toprule
+    Animal & Comida & Tamanho \\
+    \midrule
+    cão    & carne  & médio   \\
+    cavalo & capim  & grande  \\
+    sapo   & moscas & pequeno \\
+    fluf   & \multicolumn{2}{c}{desconhecido} \\
+    \bottomrule
+\end{tabular}
+
+\vspace{10pt}
+
+Você também pode usar \emph{multicolumn} em uma única célula para evitar que o tipo de coluna que você definiu no preâmbulo seja usado na célula atual. \\
+
+\begin{tabular}{*{3}{p{2cm}}}
+    \toprule
+    \multicolumn{1}{c}{Animal} & \multicolumn{1}{c}{Comida} & \multicolumn{1}{c}{Tamanho} \\
+    \midrule
+    cão    & carne  & médio   \\
+    cavalo & capim  & grande  \\
+    sapo   & moscas & pequeno \\
+    fluf   & \multicolumn{2}{c}{desconhecido} \\
+    \bottomrule
+\end{tabular}
+
+\vspace{10pt}
+
+Unir células na vertical não é suportado no LaTeX. Geralmente é suficiente deixar células vazias. \\
+
+\begin{tabular}{lll}
+    \toprule
+    Grupo     & Animal & Tamanho \\
+    \midrule
+    herbívoro & cavalo & grande  \\
+              & cervo  & médio   \\
+              & coelho & pequeno \\
+    \addlinespace
+    carnívoro & cão    & médio   \\
+              & gato   & pequeno \\
+              & leão   & grande  \\
+    \addlinespace
+    onívoro   & corvo  & pequeno \\
+              & urso   & grande  \\
+              & porco  & médio   \\
+    \bottomrule
+\end{tabular}
+
+\vspace{10pt}
+
+% ========================
+\section{Símbolos de preâmbulo}
+
+\begin{tabular}{lp{9cm}}
+    \toprule
+    Tipo & Descrição \\
+    \midrule
+    l    & coluna alinhada à esquerda \\
+    \addlinespace
+    c    & coluna centralizada\\
+    \addlinespace
+    r    & coluna alinhada à direita\\
+    \addlinespace
+    p\{largura\}    & uma coluna com largura fixa; o texto será justificado e quebrado em linhas automaticamente\\
+    \addlinespace
+    m\{largura\}    & igual a \textbf{p}, mas centralizado verticalmente em relação ao restante da linha da tabela\\
+    \addlinespace
+    b\{largura\}    & igual a \textbf{p}, mas alinhado à base da linha\\
+    \addlinespace 
+    w\{alin\}\{largura\}    & escreve o conteúdo em uma \textbf{largura} fixa, extrapolando o espaço dado se o conteúdo for mais largo. Você pode escolher o alinhamento horizontal \textbf{alin} usando \textbf{l}, \textbf{c}, ou \textbf{r}\\
+    \addlinespace
+    W\{alin\}\{largura\}    & igual a \textbf{w}, mas haverá um aviso de “overfull box” se o conteúdo for mais largo que largura\\
+    \bottomrule
+\end{tabular}
+
+\vspace{10pt}
+
+Outros símbolos de preâmblo estão disponíveis, que não criam uma coluna, mas também são úteis \\
+
+\begin{tabular}{lp{9cm}}
+    \toprule
+    Tipo & Descrição \\
+    \midrule
+    *\{num\}\{símbolos\}    & repete \textbf{símbolos} no preâmbulo \textbf{num} vezes. Com isso você pode criar várias colunas com configuração idêntica\\
+    \addlinespace
+    >\{decl\}    & inclui \textbf{decl} antes do conteúdo de cada célula da coluna a seguir (isso é útil, por exemplo, para usar uma fonte diferente para esta coluna)\\
+    \addlinespace
+    <\{decl\}    & inclui \textbf{decl} depois do conteúdo de cada célula da coluna anterior\\
+    \addlinespace
+    |    & adiciona uma borda vertical\\
+    \addlinespace
+    @\{decl\}    & substiti o espaço entre colunas por \textbf{decl}\\
+    \addlinespace
+    !\{decl\}    & adiciona \textbf{decl} no centro do espaço existente entre colunas\\
+    \bottomrule
+\end{tabular}
+
+
+\end{document}

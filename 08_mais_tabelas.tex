@@ -1,0 +1,317 @@
+% https://www.learnlatex.org/pt/more-08
+
+\documentclass[brazilian, 12pt]{article}
+\usepackage{babel}
+\usepackage[T1]{fontenc}
+\usepackage{array}   % adiciona mais funcionalidades às tabelas do LaTeX
+\usepackage{booktabs}  % fornece quatro tipos diferentes de borda
+\usepackage{siunitx}   % fornece o tipo de coluna S para alinhamento dos números
+\usepackage{tabularx}  % para ajuste da largura da tabela
+\usepackage{longtable}  % para tabelas multi-páginas
+\usepackage{threeparttable}  % permite colocar notas em um bloco da mesma largura da tabela - https://texdoc.org/pkg/threeparttable
+
+\setlength{\tabcolsep}{1cm}   % ajuste do espaço entre as colunas - https://texdoc.org/serve/siunitx/0
+
+\begin{document}
+
+% ========================
+\section{Aplicando estilos}
+
+Como > e < podem ser usados para colocar coisas antes e depois dos conteúdos das células de uma coluna, você pode usar esses símbolos para adicionar comandos que afetam a aparência de uma coluna.
+
+\emph{multicolumn} pode ser usado para que aprimeira célula não seja afetada porque ela é o cabeçalho da tabela.\\
+
+\begin{tabular}{>{\itshape}l<{} *{2}{l}}
+    \toprule
+    \multicolumn{1}{l}{Animal} & Comida & Tamanho \\
+    \midrule
+    cão    & carne  & médio   \\
+    cavalo & capim  & grande  \\
+    sapo   & moscas & pequeno \\
+    \bottomrule
+\end{tabular}
+
+\vspace{10pt}
+
+% ========================
+\section{Manipulando espaços entre colunas}
+
+O espaço é definido com o parâmetro \emph{tabcolsep}. Devido ao fato de cada coluna ser preenchida em ambos os lados, você obtém um \emph{tabcolsep} em cada lateral da tabela, mais 2\emph{tabcolsep} entre cada duas colunas – um de cada coluna. O ajuste é feito com \emph{setlength} no preâmbulo do documento.
+
+Você pode trocar esse espaço por algo à sua escolha usando @. Esse símbolo vai remover o espaçamento entre duas colunas e inserir o argumento entre elas. \\
+
+\begin{tabular}{l@{ : }l@{\hspace{2cm}}l}
+    Animal & Comida & Tamanho \\
+    cão    & carne  & médio   \\
+    cavalo & capim  & grande  \\
+    sapo   & moscas & pequeno \\
+\end{tabular}
+
+\vspace{10pt}
+
+O símbolo ! adiciona o argumento no centro do espaço entre as colunas \\
+
+\begin{tabular}{l!{:} l l}
+    Animal & Comida & Tamanho \\
+    cão    & carne  & médio   \\
+    cavalo & capim  & grande  \\
+    sapo   & moscas & pequeno \\
+\end{tabular}
+
+\vspace{10pt}
+
+% ========================
+\section{Personalizando as bordas de booktabs}
+
+Todas as bordas do pacote booktabs e \emph{addlinespace} suportam um argumento opcional entre colchetes com o qual você pode especificar a espessura da borda. Além disso, o comprimento da redução do traço de \emph{cmidrule} pode ser modificado especificando um comprimento entre chaves depois de r ou l. \\
+
+\begin{tabular}{@{} lll@{}}
+    \toprule[2pt]
+    Animal & Comida & Tamanho \\
+    \midrule[1pt]
+    cão    & carne  & médio   \\
+    \cmidrule[0.5pt](r{1pt}l{1cm}){1-2}
+    cavalo & capim  & grande  \\
+    sapo   & moscas & pequeno \\ 
+    \bottomrule[2pt]
+\end{tabular}
+
+\vspace{10pt}
+
+% ========================
+\section{Alinhamento de números em colunas}
+
+O alinhamento de números em tabelas pode ser feito usando o tipo de coluna \emph{S}, do pacote \emph{siunitx}. Células não-numéricas devem ser “protegidas” colocando o seu conteúdo entre chaves. \\
+
+\begin{tabular}{SS}
+    \toprule[2pt]
+    {Valores} & {Mais Valores} \\
+    \midrule[1pt]
+    1        &   2.3456 \\
+    1.2      &   34.2345 \\
+    -2.3     &   90.473 \\
+    40       &   5642.5 \\
+    5.3      &   1.2e3 \\
+    0.2      &   1e4 \\
+    \bottomrule[2pt]
+\end{tabular}
+
+\vspace{10pt}
+
+% ========================
+\section{Especificando a largura total da tabela}
+
+É quase sempre preferível formatar a tabela para caber em uma largura conforme explicado abaixo do que redimensionar a tabela usando \emph{resizebox} e comandos similares que vão produzir tamanhos de fontes e espessuras de linha inconsistentes.
+
+\subsection{tabular*}
+
+O ambiente \emph{tabular*} leva um argumento adicional de largura, que especifica a largura total da tabela. Espaço esticável deve ser adicionado à tabela usando o comando \emph{extracolsep}. Esse espaço é adicionado entre todas as colunas a partir daquele ponto no preâmbulo. \emph{extracolsep} é quase sempre usado com \emph{fill}, um espaço especial que estica o quanto for necessário.
+
+\begin{center}
+\begin{tabular}{cc}
+    \hline
+    A & B \\
+    C & D \\
+    \hline
+\end{tabular}
+\end{center}
+
+\vspace{10pt}
+
+\begin{center}
+\begin{tabular*} {0.6\textwidth} {@{\extracolsep{\fill}} cc @{}}
+    \hline
+    A & B \\
+    C & D \\
+    \hline
+\end{tabular*}
+\end{center}
+
+\vspace{10pt}
+
+\begin{center}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}cc@{}}
+\hline
+A & B\\
+C & D\\
+\hline
+\end{tabular*}
+\end{center}
+
+\vspace{10pt}
+
+\subsection{tabularx}
+
+O ambiente \emph{tabularx}, do pacote de mesmo nome, tem uma sintaxe similar a \emph{tabular*} mas, ao invés de ajustar o espaço entre as colunas, ajusta a largura das colunas do tipo X. Isso é equivalente a uma coluna \emph{p\{...\}} com um valor automaticamente determinado para a largura.
+
+\begin{center}
+\begin{tabular}{lp{2cm}}
+    \hline
+    A & B B B B B B B B B B B B B B B B B B B B B B B B\\
+    C & D D D D D D D\\
+    \hline
+\end{tabular}
+\end{center}
+
+\vspace{10pt}
+
+\begin{center}
+\begin{tabularx}{0.5\textwidth}{lX}
+    \hline
+    A & B B B B B B B B B B B B B B B B B B B B B B B B\\
+    C & D D D D D D D\\
+    \hline
+\end{tabularx}
+\end{center}
+
+\vspace{10pt}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{lX}
+    \hline
+    A & B B B B B B B B B B B B B B B B B B B B B B B B\\
+    C & D D D D D D D\\
+    \hline
+\end{tabularx}
+\end{center}
+
+\vspace{10pt}
+
+% ========================
+\section{Tabelas multi-páginas}
+
+Um ambiente tabular cria uma caixa inquebrável, então ela deve ser pequena o suficiente para caber em uma página, e é geralmente colocada em um ambiente float table. Vários pacotes têm variações com sintaxe similar que permitem quebras de página na tabela. Aqui mostramos o pacote \emph{longtable}: \\
+
+\vspace{20pt}
+
+\begin{longtable}{cc}
+\multicolumn{2}{c}{Uma tabela longa} \\
+Left Side & Right Side \\
+\hline
+\endhead
+\hline
+\endfoot
+aa & bb\\  
+Texto & b\\  
+a & b\\  
+a & b\\  
+a & b\\  
+a & b\\  
+a & bbb\\  
+a & b\\  
+a & b\\  
+a & b\\  
+a & b\\  
+a & b\\  
+a & b\\  
+a & b b b b b b\\  
+a & b b b b b\\  
+a & b b\\  
+Texto mais largo & b\\
+\end{longtable}
+
+\vspace{10pt}
+
+% ========================
+\section{Notas em tabelas}
+
+Usa o pacote \emph{threeparttable} \\
+
+\begin{table}[h]
+\begin{threeparttable}
+    \caption{Um exemplo}
+    \begin{tabular}{ll}
+        \hline
+        Texto & 42\tnote{1}\\
+        Mais texto & 24\tnote{2}\\
+        \hline
+    \end{tabular}
+    \begin{tablenotes}
+        \item [1] A primeira nota.
+        \item [2] A segunda nota.
+    \end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\vspace{10pt}
+
+% ========================
+\section{Novos tipos de colunas}
+
+O pacote \emph{array} permite construções como \emph{>\{\textbackslash bfseries\}c} para denotar uma coluna centralizada com texto em negrito
+
+\newcolumntype{B}{>{\bfseries}c}
+
+\begin{center}
+\begin{tabular}{Bc}
+    \hline
+    A & B \\
+    C & D \\
+    \hline
+\end{tabular}
+\end{center}
+
+\vspace{10pt}
+
+% ========================
+\section{Truques Verticais}
+
+Frequentemente, ao invés de fazer uma célula cobrir múltiplas linhas, é melhor fazer uma única linha em que algumas células são divididas verticalmente usando ambientes \emph{tabular} dentro dessa célula \\
+
+\begin{tabular}{lcc}
+  \toprule
+  Teste & \begin{tabular}{@{}c@{}}A\\a\end{tabular} & \begin{tabular}{@{}c@{}}B\\b\end{tabular} \\
+  \midrule
+  Conteúdo & vai & aqui \\
+  Conteúdo & vai & aqui \\
+  Conteúdo & vai & aqui \\
+  \bottomrule
+\end{tabular}
+
+\vspace{10pt}
+
+ Você pode controlar o alinhamento vertical usando o argumento opcional do ambiente \emph{tabular}; ele suporta usar \textbf{t}, \textbf{c}, ou \textbf{b} para alinhar ao topo, ao centro, ou à base, respectivamente\\
+
+\begin{tabular}{lcc}
+  \toprule
+  Teste & \begin{tabular}[b]{@{}c@{}}A\\a\end{tabular} & \begin{tabular}[t]{@{}c@{}}B\\b\end{tabular} \\
+  \midrule
+  Conteúdo & vai & aqui \\
+  Conteúdo & vai & aqui \\
+  Conteúdo & vai & aqui \\
+  \bottomrule
+\end{tabular}
+
+\vspace{10pt}
+
+% ========================
+\section{Espaçamento entre linhas da tabela}
+
+\begin{center}
+\begin{tabular}{cc}
+\hline
+Quadrado & $x^2$\\
+\hline
+Cubo & $x^3$\\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{10pt}
+
+O melhor é apenas aumentar a altura das linhas, sem aumentar sua profundidade abaixo da linha base \\
+
+\begin{center}
+\setlength\extrarowheight{20pt}  % \extrarowheight é parâmetro do pacote array
+\begin{tabular}{cc}
+\hline
+Quadrado& $x^2$\\
+\hline
+Cubo& $x^3$\\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+\end{document}
