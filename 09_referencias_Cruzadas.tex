@@ -1,0 +1,17 @@
+% https://www.learnlatex.org/pt/lesson-09
+
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}  % transforma as referências cruzadas em links
+
+
+\begin{document}
+	\section{seção 1}
+	Um texto com um link para a Seção \ref{sec: next}.
+	
+	
+	\section{seção 2}
+	\label{sec: next}
+	hyperref deve ser carregado depois de quaisquer outros pacotes especificados no preâmbulo do documento.
+	
+\end{document}

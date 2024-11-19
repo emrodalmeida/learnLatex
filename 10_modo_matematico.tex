@@ -1,0 +1,160 @@
+% https://www.learnlatex.org/pt/lesson-10
+% https://www.tug.org/TUGboat/tb41-1/tb127gregorio-math.pdf
+% http://texdoc.org/pkg/amsmath
+
+\documentclass{article}
+\usepackage[T1]{fontenc}
+% \usepackage{amsmath}
+\usepackage{mathtools}   % carrega o amsmath e acrescenta funcionalidades adicionais
+
+\begin{document}
+Uma frase com matemática embutida: $y = mx + c$.
+Uma segunda frase com matemática embutida: $5^{2}=3^{2}+4^{2}$.
+
+Um segundo parágrafo com matemática em destaque e sem numeração:
+\[
+y = mx + c
+\]
+Veja como o parágrafo continua após a equação.
+
+Um parágrafo sobre uma equação maior não numerada.
+\[
+\int_{-\infty}^{+\infty} e^{-x^2} \, dx
+\]
+
+Um parágrafo sobre uma equação maior numerada.
+\begin{equation}
+	\int_{-\infty}^{+\infty} e^{-x^2} \, dx
+\end{equation}
+
+
+
+\newcommand{\diff}{\mathop{} \! d}            % Itálico
+%\newcommand{\diff}{\mathop{} \! \mathrm{d}}  % Normal
+Um parágrafo sobre uma equação mais longa
+\[
+\int_{-\infty}^{+\infty} e^{-x^2} \diff x
+\]
+
+
+Matrizes AMS.
+\[
+\begin{matrix}
+	a & b & c \\
+	d & e & f
+\end{matrix}
+\qquad
+\begin{pmatrix}
+	a & b & c \\
+	d & e & f
+\end{pmatrix}
+\qquad
+\begin{bmatrix}
+	a & b & c \\
+	d & e & f
+\end{bmatrix}
+\]
+
+
+A matriz $\mathbf{M}$.
+
+$\text{bad use } size  \neq \mathit{size} \neq \mathrm{size} $
+
+\textit{$\text{bad use } size \neq \mathit{size} \neq \mathrm{size} $}
+
+
+% ===================================================
+
+\section{Ambientes de alinhamento do amsmath}
+
+
+\textbf{gather} para equações de várias linhas que não precisam alinhamento
+
+\begin{gather}
+	P(x) = ax^{5} + bx^{4} + cx^{3} + dx^{2} + ex + f \\
+	x^2 + x = 10
+\end{gather}
+
+\textbf{multiline} para dividir uma única expressão em várias linhas, alinhando a primeira linha à esquerda e a última à direita.
+
+\begin{multline}
+	(a + b + c + d) x^{5} + (b + c + d + e) x^{4} \\
+	+ (c + d + e + f) x^{3} + (d + e + f + a) x^{2} + (e + f + a + b) x\\
+	+ (f + a + b + c)
+\end{multline}
+
+
+% ===================================================
+
+\section{Alinhamento em colunas}
+
+\begin{align}
+	a &= b+1   &  c &= d+2  &  e &= f+3   \\
+	r &= s^{2} &  t &=u^{3} &  v &= w^{4}
+\end{align}
+
+Há variantes dos ambientes com nome terminando em ed, que formam um sub termo dentro de uma equação maior. Por exemplo, \textbf{aligned} e \textbf{gathered} são variantes de \textbf{align} e \textbf{gather} respectivamente.
+
+O ambiente \textbf{aligned} é usado dentro de outro ambiente matemático maior, \textbf{\textbackslash equation} ou estruturas delimitadoras como \textbf{\textbackslash left} e \textbf{\textbackslash right}. Ele não cria sua própria estrutura de exibição, mas organiza o conteúdo dentro do ambiente que o contém.
+
+\[     % ambiente matemático maior
+	\left.     			   % abre o bloco com um delimitador invisível
+		\begin{aligned}    % organiza o conteúdo dentro do ambiente
+		a &= b\\
+		c &= d
+		\end{aligned} 
+	\right\}    		   % fecha o bloco com uma chave direita
+	\Longrightarrow
+	\left\{      		   % abre o bloco com uma chave esquerda
+		\begin{aligned}    % organiza o conteúdo dentro do ambiente
+			b &= a\\
+			d &= c
+		\end{aligned}
+	\right.	   			   % fecha o bloco com um delimitador invisível
+\]
+
+\textbf{aligned} aceita um argumento opcional de posicionamento similar ao ambiente \textbf{tabular}. Isso geralmente é útil para alinhar uma equação embutida na primeira linha
+
+\begin{itemize}
+	\item 
+	$\begin{aligned}[t]
+		a&=b\\
+		c&=d
+	\end{aligned}$
+	\item 
+	$\begin{aligned}
+		a&=b\\
+		c&=d
+	\end{aligned}$
+\end{itemize}
+
+% ===================================================
+
+\section{Mathtools}
+
+Permite escolher o alinhamento das colunas da matriz.
+
+\[
+\begin{pmatrix*}[r]
+	10&11\\
+	1&2\\
+	-5&-6
+\end{pmatrix*}
+\]
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
