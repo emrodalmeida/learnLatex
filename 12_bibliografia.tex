@@ -1,0 +1,40 @@
+% https://www.learnlatex.org/pt/lesson-12
+
+\documentclass[brazilian, 12pt]{article}
+\usepackage{babel}
+\usepackage[T1]{fontenc}
+\usepackage[parfill]{parskip}
+\usepackage[style=authoryear]{biblatex}   % também há o estilo 'numeric'
+\addbibresource{12_bibliografia.bib}
+
+\begin{document}
+A amostra de matemática é de \autocite{Graham1995}.
+
+Algumas citações mais complexas: \parencite{Graham1995} ou
+\textcite{Thomas2008} ou talvez \citetitle{Graham1995}.
+
+\autocite[56]{Thomas2008}
+
+\autocite[See][45-48]{Graham1995}
+
+Juntas \autocite{Thomas2008, Graham1995}
+
+\vspace{2cm}
+
+No fluxo de trabalho com o BibTeX, o estilo da bibliografia é decidido por um arquivo .bst que você escolhe com o comando \textbf{\textbackslash bibliographystyle}. O biblatex não usa arquivos .bst, mas um sistema diferente. Se você está usando um modelo de documento que vem com um arquivo .bst ou receber um arquivo desses para usar no seu projeto, então você deverá usar o BibTeX e não poderá usar o biblatex.
+
+Tendo existido por muito mais tempo que o biblatex, o fluxo de trabalho com o BibTeX é mais bem estabelecido, o que significa que muitas editoras e revistas esperam bibliografias geradas pelo BibTeX. Essas revistas não podem, ou em geral não querem, aceitar submissões usando o biblatex.
+
+Em resumo: verifique as diretrizes ao autor/submissão se você está enviando seu trabalho para uma revista ou editora. Se você receber um arquivo .bst, você deve usar o fluxo de trabalho com o BibTeX. Se você quer uma bibliografia e estilo relativamente simples e só precisa de ordenação compatível com inglês/ASCII, o fluxo de trabalho com o BibTeX deve ser suficiente. Se você precisa de um estilo mais complexo, usando alfabeto não-inglês, ou quer acesso mais fácil à personalização do estilo de citação e bibliografia, você vai preferir usar o biblatex.
+
+O programa BibTeX foi escrito originalmente para trabalhar com referências em inglês. Ele é bem limitado em termos de caracteres com acentos, e ainda mais com caracteres não-latinos. Em contrapartida, o Biber foi projetado desde o princípio para trabalhar com diversos alfabetos corretamente.
+
+Isso significa que, se você precisa escrever uma bibliografia em um idioma com alfabeto diferente do inglês, ou até com caracteres especiais, você provavelmente vai precisar usar o biblatex e o Biber, ao invés do natbib e BibTeX.
+
+\vspace{2cm}
+
+% \bibliographystyle{ieee}  % também dá para usar esse comando no lugar de style=authoryear no preâmbulo
+\printbibliography
+
+
+\end{document}

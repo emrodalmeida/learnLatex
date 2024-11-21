@@ -1,0 +1,61 @@
+% https://www.learnlatex.org/pt/lesson-13
+% https://www.learnlatex.org/pt/more-13
+
+\documentclass[brazilian, 12pt]{book}
+\usepackage{babel}
+\usepackage[T1]{fontenc}
+\usepackage[parfill]{parskip}
+\usepackage{imakeidx}      % para criar um índice remissivo
+\usepackage{biblatex}
+\addbibresource{biblatex-examples.bib}
+
+
+\title{Um livro de exemplo}
+\author{John Doe \and Joe Bloggs}
+
+
+% útil para compilar apenas partes do documento, especialmente em documentos longos como livros ou dissertações.
+\IfFileExists{\jobname.run.xml}
+{
+% Escolhemos quais capítulos serão de fato compilados usando \includeonly, que como você pode ver recebe uma lista separada por vírgula de nomes de arquivo. Ao usar o \includeonly, você pode encurtar o tempo total de execução do seu documento e produzir um PDF ‘seletivo’ para revisão. Adicionalmente, a principal vantagem de \includeonly é que o LaTeX vai usar todas as referências cruzadas dos arquivos .aux de outros arquivos incluídos.
+\includeonly{
+  front,
+%  chap1,
+  chap2,
+%  append
+  }
+}
+% não há comandos específicos, mas o comentário sugere compilar o documento inteiro para gerar arquivos auxiliares
+{    
+% Inicialmente compilar o documento inteiro
+% para gerar todos os arquivos .aux
+}
+
+
+\begin{document}
+
+% \frontmatter muda a numeração das páginas para algarismos romanos
+\frontmatter
+
+% \input é bom para partes de um longo arquivo que não são capítulos separados. No exemplo, nós o usamos para separar a capa e contracapa, mantendo o arquivo principal curto e claro.
+\input{frontcover}
+\include{front}
+
+% =========================
+\mainmatter
+
+% \include é bom para capítulos, então o usamos para capítulos completos; ele sempre inicia uma nova página.
+\include{chap1}
+\include{chap2}
+
+% \appendix muda a numeração dos capítulos para A, B etc., então o primeiro comando \chapter depois de \appendix imprime Appendix A.
+\appendix
+\include{append}
+
+% ========================
+\backmatter
+\printbibliography
+\newpage
+\input{backcover}
+
+\end{document}

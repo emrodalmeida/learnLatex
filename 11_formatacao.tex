@@ -1,0 +1,61 @@
+% https://www.learnlatex.org/pt/lesson-11
+
+\documentclass[brazilian, 12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage[parfill]{parskip}  % suprime a identação dos parágrafos e coloca o espaço em branco entre eles
+
+\begin{document}
+
+% ============================================
+\section{Espaçamento entre parágrafos}
+Um estilo comum é não ter indentação para parágrafos, mas ter uma ‘linha em branco’ entre eles. Podemos obter esse resultado com o pacote \textbf{parskip}: \\[20pt]
+\lipsum[1-3]
+
+
+% ============================================
+\section{Espaçamento explícito}
+Algum texto \hspace{1cm} mais texto.
+
+\vspace{10cm}
+
+Ainda mais texto.
+
+
+% ============================================
+\section{Formatação explícita}
+\subsection{Trechos curtos}
+Vamos nos divertir com fontes: \textbf{negrito}, \textit{itálico}, \textrm{romano}, \textsf{sans serif}, \texttt{monoespaçado} and \textsc{versalete}.
+
+\subsection{Texto corrido}
+Texto normal.
+
+{\itshape
+Este texto é itálico.
+
+Este também:  o efeito não se limita a um parágrafo, portanto é necessário colocar o texto em um grupo.
+}
+
+Ambientes no LaTeX formam grupos, assim como células de tabelas, ou podemos usar \{...\} para criar um grupo explícito.
+
+\subsection{Tamanho da fonte}
+É obrigatório terminar um parágrafo antes de mudar o tamanho da fonte de volta. Isso pode ser feito adicionando um \textbf{\textbackslash par}, que equivale a uma linha em branco.
+
+\begin{center}
+{\itshape \huge Algum texto\par}
+Texto normal\\
+{\bfseries \tiny Texto muito menor\par}
+\end{center}
+
+
+% ============================================
+\section{Suprimindo a indentação de um parágrafo}
+Se você quer omitir a indentação de um único parágrafo, você pode usar \textbf{\textbackslash noindent}. Esse comando deve ser usado raramente; na maioria das vezes você deve deixar o LaTeX cuidar disso automaticamente.
+
+Um pequeno parágrafo, que nós alongamos para ter certeza que você consiga ver o efeito aqui!
+
+Um pequeno parágrafo, que nós alongamos para ter certeza que você consiga ver o efeito aqui!
+
+\noindent Um pequeno parágrafo, que nós alongamos para ter certeza que você consiga ver o efeito aqui!
+
+\end{document}
