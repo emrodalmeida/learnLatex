@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage[hidelinks]{hyperref}
+
+\usepackage[alf, abnt-emphasize=bf, abnt-etal-list=0]{abntex2cite}
+\citeoption{abnt-full-initials=yes, 
+            abnt-missing-year=void,
+            abnt-doi=link}
+\citebrackets()
+
+\begin{document}
+
+Citação indireta de um artigo que descreve um algoritmo para melhoria de imagem \cite{janani_image_2015}. \\
+
+Citação indireta do trabalho de \citeonline{janani_image_2015} que descreve um algoritmo para melhoria de imagem. \\
+
+Uma citação direta conforme \citeonline{el-mashed_target_2012} seria "The proposed RDA-FrFT takes its advantage of the property of the FrFT to resolve chirp signals with high precision". \\
+
+Outra citação direta: "The proposed RDA-FrFT takes its advantage of the property of the FrFT to resolve chirp signals with high precision" \cite{el-mashed_target_2012}. \\
+
+Citação de uma página específica do datasheet do NE555 que contém a pinagem do CI \cite[p. 3]{datasheet_555}.
+
+%\bibliographystyle{abnt-alf}
+\bibliography{teste}
+
+\end{document}
