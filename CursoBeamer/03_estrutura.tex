@@ -1,0 +1,109 @@
+% https://www.youtube.com/watch?v=3yHAu8dPxVk&list=PLa_2246N48_rk8nzKg6VDykSEU6svwv4r&index=3
+
+\documentclass{beamer}
+\usetheme{Berlin}      % Frankfurt tb é legal
+\setbeamercovered{transparent}
+\usepackage[utf8]{inputenc}
+
+\title{Titulo}
+\subtitle{Subtitulo}
+\author[A.]{Autor}
+\date{Data}
+\institute[Inst.]{Intituição}
+\logo{Imagem de logo}
+
+\AtBeginSection{
+	\begin{frame}
+		\tableofcontents[currentsection, hideothersubsections]   % currentsection destaca a seção atual
+	\end{frame}
+}
+
+\AtBeginSubsection{
+	\begin{frame}
+		\tableofcontents[currentsubsection]   % currentsubsection destaca a subseção atual
+	\end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+	\maketitle
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sumário}
+	\tableofcontents[pausesections, pausesubsections]
+\end{frame}
+
+\section[Intro]{Introdução}
+\begin{frame}
+	\frametitle{Titulo do quadro}
+	\framesubtitle{Subtítulo do quadro}
+	
+	Quadro 1
+\end{frame}
+
+\section{Metodologia}
+\subsection{Subseção da Metodologia}
+\begin{frame}
+	\frametitle{Titulo do quadro}
+	\framesubtitle{Subtítulo do quadro}
+	
+	Quadro 2 \cite{prof_bairros_zener_2021}
+\end{frame}
+
+\subsection{Outra subseção da Metodologia}
+\begin{frame}
+	\frametitle{Titulo do quadro}
+	\framesubtitle{Subtítulo do quadro}
+	
+	Quadro 3
+\end{frame}
+
+\section{Discussão}
+\subsection{Subseção da Discussão}
+\begin{frame}
+	\frametitle{Titulo do quadro}
+	\framesubtitle{Subtítulo do quadro}
+	
+	Quadro 4 \cite{pertencejr_2003}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Titulo do quadro}
+	\framesubtitle{Subtítulo do quadro}
+	
+	Quadro 5
+\end{frame}
+
+\subsection{Outra subseção da Discussão}
+\begin{frame}
+	\frametitle{Titulo do quadro}
+	\framesubtitle{Subtítulo do quadro}
+	
+	Quadro 6
+\end{frame}
+
+\section{Conclusão}
+\begin{frame}
+	\frametitle{Titulo do quadro}
+	\framesubtitle{Subtítulo do quadro}
+	
+	Quadro 7
+\end{frame}
+
+\begin{frame}
+	\frametitle{Titulo do quadro}
+	\framesubtitle{Subtítulo do quadro}
+	
+	Quadro 8
+\end{frame}
+
+\section*{Referências}
+\begin{frame}
+	\bibliographystyle{plain}
+	\bibliography{referencias}
+\end{frame}
+
+
+\end{document}

@@ -1,0 +1,217 @@
+% https://www.youtube.com/watch?v=naNYRFrCXV0&list=PLa_2246N48_rk8nzKg6VDykSEU6svwv4r&index=2
+
+\documentclass[aspectratio=43]{beamer}
+\usetheme{AnnArbor}
+\setbeamercovered{transparent}      % Faz com que as partes ainda não mostradas do \pause e \uncover fiquem transparentes (não afeta o \visible)
+\usepackage[utf8]{inputenc}
+
+\title{Título}
+\subtitle{Subtítulo}
+\author[A.]{Autor}
+\institute[Inst.]{Instituição}
+\date{Data}
+\logo{Imagem de Logo}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle{Título do quadro}
+	\framesubtitle{Subtítulo do quadro}
+	
+	Primeiro item:
+	\[ a^2x + bx +c = 0\]
+	
+	Segundo item: $y = ax + b$
+	
+	Terceiro item:
+	$$ e^\pi + 1 = 0 $$
+	
+	Quarto item:
+	$$ x^2 + y^2 = 0 $$
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Título do quadro}
+	\framesubtitle{item a item usando \textbackslash pause (reserva espaço para cada item)}
+	
+	Primeiro item:
+	\[ a^2x + bx +c = 0\] \pause
+	
+	Segundo item: $y = ax + b$ \pause
+	
+	Terceiro item:
+	$$ e^\pi + 1 = 0 $$ \pause
+	
+	Quarto item:
+	$$ x^2 + y^2 = 0 $$
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Título do quadro}
+	\framesubtitle{item a item usando \textbackslash uncover (reserva espaço para cada item)}
+	
+	\uncover<1>{Primeiro item:
+	\[ a^2x + bx +c = 0\]}
+	
+	% Colocar \setbeamercovered{transparent} no preâmbulo
+	\uncover<2>{Segundo item: $y = ax + b$}
+	
+	\uncover<3>{Terceiro item:
+	$$ e^\pi + 1 = 0 $$}
+	
+	\uncover<4>{Quarto item:
+	$$ x^2 + y^2 = 0 $$}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Título do quadro}
+	\framesubtitle{item a item usando \textbackslash visible (reserva espaço para cada item)}
+	
+	\visible<1>{Primeiro item:
+		\[ a^2x + bx +c = 0\]}
+	
+	\visible<2>{Segundo item: $y = ax + b$}
+	
+	\visible<3>{Terceiro item:
+		$$ e^\pi + 1 = 0 $$}
+	
+	\visible<4>{Quarto item:
+		$$ x^2 + y^2 = 0 $$}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Título do quadro}
+	\framesubtitle{item a item usando \textbackslash only (sempre centralizado verticalmente)}
+	
+	\only<1>{Primeiro item:
+		\[ a^2x + bx +c = 0\]}
+	
+	\only<2>{Segundo item: $y = ax + b$}
+	
+	\only<3>{Terceiro item:
+		$$ e^\pi + 1 = 0 $$}
+	
+	\only<4>{Quarto item:
+		$$ x^2 + y^2 = 0 $$}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Título do quadro}
+	\framesubtitle{item a item usando \textbackslash uncover e mantendo cada item no slide}
+	
+	\uncover<1->{Primeiro item:
+		\[ a^2x + bx +c = 0\]}
+	
+	% Colocar \setbeamercovered{transparent} no preâmbulo
+	\uncover<2->{Segundo item: $y = ax + b$}
+	
+	\uncover<3->{Terceiro item:
+		$$ e^\pi + 1 = 0 $$}
+	
+	\uncover<4->{Quarto item:
+		$$ x^2 + y^2 = 0 $$}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Título do quadro}
+	\framesubtitle{item a item usando \textbackslash uncover e mantendo os itens em slides diferentes}
+	
+	\uncover<1-3>{Primeiro item:
+		\[ a^2x + bx +c = 0\]}
+	
+	% Colocar \setbeamercovered{transparent} no preâmbulo
+	\uncover<2->{Segundo item: $y = ax + b$}
+	
+	\uncover<1, 4>{Terceiro item:
+		$$ e^\pi + 1 = 0 $$}
+	
+	\uncover<3-4>{Quarto item:
+		$$ x^2 + y^2 = 0 $$}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Título do quadro}
+	\framesubtitle{lista não numerada no ambiente itemize + ação em um slide específico}
+	
+	\begin{itemize}	
+	\item<1- | alert@3> Primeiro item:
+		\[ a^2x + bx +c = 0\]
+	
+	\item<2- | alert@2-4> Segundo item: $y = ax + b$
+	
+	\item<3- | alert@3> Terceiro item:
+		$$ e^\pi + 1 = 0 $$
+	
+	\item<4- | alert@4> Quarto item:
+		$$ x^2 + y^2 = 0 $$
+	
+	\end{itemize}
+	
+\end{frame}
+	
+\begin{frame}
+	\frametitle{Título do quadro}
+	\framesubtitle{comando automatizado no itemize para executar a ação sempre no slide atual}
+	
+	\begin{itemize}	[<+- | alert@+>]  % a ação tb pode ser uncover, visible, only
+		\item Primeiro item:
+		\[ a^2x + bx +c = 0\]
+		
+		\item Segundo item: $y = ax + b$
+		
+		\item Terceiro item:
+		$$ e^\pi + 1 = 0 $$
+		
+		\item Quarto item:
+		$$ x^2 + y^2 = 0 $$
+		
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Título do quadro}
+	\framesubtitle{sobreposição com blocos}
+	
+	\begin{block}<1>{Título 1}
+		Bloco 1
+	\end{block}
+	
+	\begin{block}<2>{Título 2}
+		Bloco 2
+	\end{block}
+	
+	\begin{block}<3>{Título 3}
+		Bloco 3
+	\end{block}
+	
+	\begin{block}<4>{Título 4}
+		Bloco 4
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Título do quadro}
+	\framesubtitle{sobreposição com figuras}
+	
+	\begin{figure}
+		\centering
+		\includegraphics<1>[scale=0.3]{figuras/divisorTensao_20241001a.png}
+		\includegraphics<2>[scale=0.3]{figuras/divisorTensao_20241001b.png}
+		\includegraphics<3>[scale=0.3]{figuras/pullUpDown.png}
+		\includegraphics<4>[scale=0.3]{figuras/RLCserie_20241001.png}
+	\end{figure}
+	
+\end{frame}
+
+\end{document}
